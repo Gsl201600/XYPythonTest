@@ -13,7 +13,7 @@ for i in range(0, page):
     # 获取音乐榜单的网页信息
     html = requests.get(url)
     strr = html.text
-
+    # (.*?) 匹配分组和非贪婪模式
     pat1 = 'title="(.*?)" sid'
     pat2 = 'sid="(.*?)"'
 
