@@ -1,7 +1,7 @@
-from lxml import etree
+from bs4 import BeautifulSoup
 
-html = etree.HTML(text)
+soup = BeautifulSoup(html, "lxml")
 
-result = etree.tostring(html)
+soup2 = BeautifulSoup(open(""))
 
-print(type(html))
+soup.prettify()
