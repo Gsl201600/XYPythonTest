@@ -9,7 +9,7 @@ header = {
 
 url = "http://changyongdianhuahaoma.51240.com/"
 res = requests.get(url, headers=header).text
-print(res)
+
 pat1 = '<tr bgcolor="#EFF7F0">[\s\S]*?<td>(.*?)</td>[\s\S]*?<td>[\s\S]*?</td>[\s\S]*?</tr>'
 pat2 = '<tr bgcolor="#EFF7F0">[\s\S]*?<td>[\s\S]*?</td>[\s\S]*?<td>(.*?)</td>[\s\S]*?</tr>'
 
