@@ -24,5 +24,8 @@ pattern2 = re.compile(pat2, re.I)
 result1 = pattern1.findall(res)
 result2 = pattern2.findall(res)
 
+result = re.sub('\D', '', result2[-1])
+print(':::::', result)
+
 print(result1[0])
 print(result2[-1])

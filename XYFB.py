@@ -1,6 +1,7 @@
 # -*- coding:UTF-8 -*-
 import requests
 from lxml import etree
+import re
 
 # url = "https://www.youtube.com/user/TheOtakuMoe"
 # url = "https://www.youtube.com/user/TheOddBroY"
@@ -19,6 +20,9 @@ res = requests.get(url, headers=header).content.decode()
 
 html = etree.HTML(res)
 links = html.xpath('//div[@class="_4bl9"]/div')
+
+result = re.sub('\D', '', links[1].text)
+print("::::", result)
 
 for content in links:
     print(content.text)
