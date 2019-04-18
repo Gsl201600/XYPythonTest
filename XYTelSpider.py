@@ -1,5 +1,6 @@
 import requests
 import re
+import xlsxwriter
 
 header = {
     'Accept': 'application/json, text/javascript, */*; q=0.01',
@@ -21,8 +22,16 @@ data2 = pattern2.findall(res)
 
 resultList = []
 
+# 创建表格
+workBook = xlsxwriter.Workbook('Telphone.xlsx')
+workSheet = workBook.add_worksheet()
+
 for i in range(0, len(data1)):
     resultList.append(data1[i] + data2[i])
 
+    # 写入数据
+    workSheet.write('A'+str(i+1), data1[i])
+    workSheet.write('B'+str(i+1), data2[i])
 
 print(resultList)
+workBook.close()
