@@ -15,7 +15,7 @@ from email import encoders
 # 第三方 SMTP 服务
 mail_host="smtp.qq.com"  #设置服务器
 mail_user="2509552914@qq.com"    #邮箱用户名
-mail_pass="plgkeuiwpzbjdice"   #授权码
+mail_pass="kfhzletcekegdjfi"   #授权码
 scheme = 'Unity-iPhone'
 #时间字符串
 time_Tag = '%s'%(time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())))

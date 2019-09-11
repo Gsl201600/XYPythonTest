@@ -5,7 +5,7 @@ import re
 # url = 'https://www.twitch.tv/thean1meman'
 
 url = "https://gql.twitch.tv/gql"
-page = "thean1meman"
+page = "luckycritgaming"
 
 header = {
     'Accept-Language': 'zh-CN',
