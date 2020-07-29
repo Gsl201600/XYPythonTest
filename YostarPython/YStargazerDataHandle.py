@@ -13,7 +13,7 @@ class YStargazerDataHandle(object):
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'
             }
         self.headerYTB = {
-            'cookie': 'SID=dAfjqdUifmFxCC-D09Odd3D2fiLltCkg-CMl2xElgy5RlITKllNjhpjMcgqOYywqWZ0sYA.; HSID=AfgJIBJwWbDrR_fJL; SSID=ApVbqlRFuorGnBWnA; APISID=xSUNIlCEPwnwmawF/AeEVKdxW5keHLm97I; SAPISID=GZTmdMWsvFVg9kWh/A32F4oB47CWMHkNz2; VISITOR_INFO1_LIVE=IwLAWtWnqpw; LOGIN_INFO=AFmmF2swRQIhALOWpqnxGTgpBkeCN2pcOQ4Q1nnK4gXpEjHrexQ3NTGJAiBHVZC7HtIEVognS8GvoKSrR4eEGga7igmcHaJN-3ZB1g:QUQ3MjNmeFNvWi05UFRDc1gyOXZXU2h5bWkzS1BlcXQ1b2lhcUswU3dKQkdLREtja1BPZ2RnWmQtcWRoMk1lemphamN2SjYzQWcyZ0xzSTlCWW9MN0ctOHVtd0NwOHFpTmRIOWlzcW5pLTlheEdzVG9BYXNfZnRZTTdDZVo3MmpTaGJueVJWZm5WZFZsM1JTbnpQZHhoV0RpSzBnOTVQTXBmdUNaZldLaFk0RHR4UC1PWko4LU1n; PREF=al=zh-CN&f4=4000000&f1=50000000; YSC=swPQ0_Egz0g; SIDCC=AN0-TYtQDc-ZZu2msOvFBitdGu9_QBP2as5D4mTEi6D17lE6uwCkFJE8xswNWE7-1aD43P948g',
+            'cookie': 'SID=vQfIlkR0NppNHS0rOiFpRkyTg_nzkOfDP8-WNwwr-XNg6Yk6RcLCeMDGoYXziu7kODViFQ.; __Secure-3PSID=vQfIlkR0NppNHS0rOiFpRkyTg_nzkOfDP8-WNwwr-XNg6Yk68xh5tYLRPt1Q_VhGonnr6A.; HSID=AvkbbtAQOKPyqnTWr; SSID=AGqyxxP6tQL0V6Cii; APISID=bbf2gC3xqZammit4/AObWkrQXUCjjSw1jp; SAPISID=wDL8FktjhRMaoFQP/ASgSd71EQb_dHmWMG; __Secure-HSID=AvkbbtAQOKPyqnTWr; __Secure-SSID=AGqyxxP6tQL0V6Cii; __Secure-APISID=bbf2gC3xqZammit4/AObWkrQXUCjjSw1jp; __Secure-3PAPISID=wDL8FktjhRMaoFQP/ASgSd71EQb_dHmWMG; YSC=KU0qzY_sHW8; VISITOR_INFO1_LIVE=KCbpKZFucy8; LOGIN_INFO=AFmmF2swRgIhAKvEnmCXIeKXPPAzgRZxVLGhERnxSZ-rhUh71Q4k_qzQAiEAvqmPX9f4SjldOL84m3yUEO50gzpEkdXqcrC23waZaeU:QUQ3MjNmemtkQjdzMHJtLUg2TlFTWHZiZFBLWnNKNkY3Ri1ZM19aeTRvUDBxeUcxdjQ3VEZhWXZzNTNLNnN3azIybm56MFcwVjlDVjRFa2FocGo0UkY4RnhObWdOVlBoTGIxcE02bkdVZGsybEw4Zy14S2xvUE1RVWtlX2NBVkhidjRVbm95WnpyaS1JR2xCN2ljdkI3WE41dUpwNFVTT3dBRWhGamFPRDYyUzhpMEhVeWtpcmdSakhWNHVZcU1iMTdVdnUzMlJiNkwy; PREF=f4=4000000; SIDCC=AJi4QfGFvPo646obJa2TAnzBXeEPt8nHWn4o5rJaiSRzBo1-h2KDjabdeeQANsSpKh3p2teVIQ',
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'
         }
         self.headers = {
@@ -30,6 +30,7 @@ class YStargazerDataHandle(object):
     # 处理数据函数
     def handleData(self):
         resValues = json.dumps(self.data, ensure_ascii=False)
+
         youtubePatStr = 'https://www.youtube.com/.*'
         fbPatStr = 'https://www.facebook.com/.*'
         twPatStr = 'https://twitter.com/.*'
@@ -45,7 +46,7 @@ class YStargazerDataHandle(object):
                 if len(results):
                     temp = self.getYoutubeData(results[0])
 
-                    subStr = '"%s", "%s"'%(results[0], temp[0])
+                    subStr = '"%s", "%s"'%(results[0], temp)
                     pat = '"%s", "[\s\S]*?"'%results[0]
                     youtubePat = re.compile(pat)
                     resValues = youtubePat.sub(subStr, resValues)
@@ -82,7 +83,7 @@ class YStargazerDataHandle(object):
                 if len(results):
                     temp = self.getTWData(results[0])
 
-                    subStr = '"%s", "%s"'%(results[0], temp[0])
+                    subStr = '"%s", "%s"'%(results[0], temp)
                     pat = '"%s", "[\s\S]*?"'%results[0]
                     twPat = re.compile(pat)
                     resValues = twPat.sub(subStr, resValues)
@@ -95,7 +96,7 @@ class YStargazerDataHandle(object):
                 if len(results):
                     temp = self.getInsData(results[0])
 
-                    subStr = '"%s", "%s"'%(results[0], temp[0])
+                    subStr = '"%s", "%s"'%(results[0], temp)
                     pat = '"%s", "[\s\S]*?"'%results[0]
                     insPat = re.compile(pat)
                     resValues = insPat.sub(subStr, resValues)
@@ -108,7 +109,7 @@ class YStargazerDataHandle(object):
                 if len(results):
                     temp = self.getTwitchData(results[0])
 
-                    subStr = '"%s", "%s"'%(results[0], temp[0])
+                    subStr = '"%s", "%s"'%(results[0], temp)
                     pat = '"%s", "[\s\S]*?"'%results[0]
                     twitchPat = re.compile(pat)
                     resValues = twitchPat.sub(subStr, resValues)
@@ -121,8 +122,11 @@ class YStargazerDataHandle(object):
                 if len(results):
                     temp = self.getPixivData(results[0])
 
-                    subStr = '"%s", "%s"'%(results[0], temp[0])
-                    pat = '"%s", "[\s\S]*?"'%results[0]
+                    resPat = re.compile("\?id")
+                    newResults = resPat.sub("\?id", results[0])
+
+                    subStr = '"%s", "%s"'%(results[0], temp)
+                    pat = '"%s", "[\s\S]*?"'%newResults
                     pixivPat = re.compile(pat)
                     resValues = pixivPat.sub(subStr, resValues)
         
@@ -138,14 +142,20 @@ class YStargazerDataHandle(object):
         # 订阅
         pat2 = r'"subscriberCountText":{"simpleText":"(.*?)"}'
 
-        pattern1 = re.compile(pat1, re.I)
+        # pattern1 = re.compile(pat1, re.I)
         pattern2 = re.compile(pat2, re.I)
 
-        result1 = pattern1.findall(res)
+        # result1 = pattern1.findall(res)
         result2 = pattern2.findall(res)
-        result1 = re.sub('\D', '', result1[0])
-        result2 = re.sub('\D', '', result2[-1])
-        return result2, result1
+        # result1 = re.sub('\D', '', result1[0])
+        # result2 = re.sub('\D', '', result2[-1])
+        # 判断是否为空
+        if len(result2) > 0:
+            result2 = result2[-1]
+        else:
+            result2 = 'N/A'
+        
+        return result2
     
     
     # 爬取fb数据
@@ -190,7 +200,9 @@ class YStargazerDataHandle(object):
         pat = '"edge_followed_by":{"count":(.*?)}'
         pattern = re.compile(pat, re.I)
         result = pattern.findall(res)
-        return result
+        if len(result) <= 0:
+            result = 'N/A'
+        return result[0]
     
     # 爬取Twitch数据
     def getTwitchData(self, url):
@@ -206,7 +218,9 @@ class YStargazerDataHandle(object):
         pat = '"followers":{"totalCount":(.*?),'
         pattern = re.compile(pat, re.I)
         result = pattern.findall(res)
-        return result
+        if len(result) <= 0:
+            result = 'N/A'
+        return result[0]
     
     # 爬取Pixiv数据
     def getPixivData(self, url):
@@ -214,7 +228,9 @@ class YStargazerDataHandle(object):
         pat = 'class="require-register int" data-title="showBookmarkRegister" data-user-id="[\s\S]*">(.*?)</a></div></div></div></div>'
         patten = re.compile(pat, re.I)
         result = patten.findall(res)
-        return result
+        if len(result) <= 0:
+            result = r'N/A'
+        return result[0]
     
     # 爬取TW数据
     def getTWData(self, url):
@@ -223,4 +239,6 @@ class YStargazerDataHandle(object):
         pat = 'followers_count&quot;:(.*?),'
         pattern = re.compile(pat, re.I)
         result = pattern.findall(res)
-        return result
+        if len(result) <= 0:
+            result = 'N/A'
+        return result[0]

@@ -35,6 +35,7 @@ def handleForm(SAMPLE_SPREADSHEET_ID, SAMPLE_RANGE_NAME, sheetKeyInt):
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
+    # YostarPython/token.pickle
     if os.path.exists('YostarPython/token.pickle'):
         with open('YostarPython/token.pickle', 'rb') as token:
             creds = pickle.load(token)
